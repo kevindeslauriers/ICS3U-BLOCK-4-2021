@@ -15,6 +15,9 @@ public class Student {
   private String name;
   private String studentNumber;
   private int grade;
+  private int totalMarks;
+  private int numMarks;
+  private double average;
 
   /**
    * 
@@ -28,6 +31,9 @@ public class Student {
     this.name = name;
     this.studentNumber = studentNumber;
     this.grade = grade;
+    this.totalMarks = 0;
+    this.numMarks = 0;
+    this.average = 0;
   }
 
   /**
@@ -56,6 +62,21 @@ public class Student {
 
   public void displayGrade() {
     System.out.println(grade);
+  }
+
+  // naming convention for variables and methods are the same (camelCase)
+  public void displayAverage() {
+    System.out.println(average);
+  }
+
+  public void addTest(int mark) {
+    totalMarks += mark;
+    numMarks++;
+    calculateAverage();
+  }
+
+  private void calculateAverage() {
+    average = (double) totalMarks / numMarks;
   }
 
 }
