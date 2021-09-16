@@ -75,6 +75,10 @@ public class Student {
     calculateAverage();
   }
 
+  public void displayNumMarks() {
+    System.out.println(numMarks);
+  }
+
   private void calculateAverage() {
     average = (double) totalMarks / numMarks;
   }
