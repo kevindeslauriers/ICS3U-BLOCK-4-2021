@@ -37,11 +37,36 @@ public class Student {
   }
 
   /**
+   * Overloading a method is when you have multiple methods with the same but
+   * different aruguments/parameters
+   * 
+   * @param name
+   * @param studentNumber
+   */
+  public Student(String name, String studentNumber) {
+    this.name = name;
+    this.studentNumber = studentNumber;
+    this.grade = 9;
+    this.totalMarks = 0;
+    this.numMarks = 0;
+    this.average = 0;
+  }
+
+  /**
    * displayName, displayStudentNumber, increaseGrade, displayGrade The methods
    * (actions) in a class define behaviour for the class
    */
   public void displayName() {
     System.out.println(name);
+  }
+
+  /**
+   * Returns the name of the Student (non-void)
+   * 
+   * @return
+   */
+  public String getName() {
+    return name;
   }
 
   /**
@@ -67,6 +92,10 @@ public class Student {
   // naming convention for variables and methods are the same (camelCase)
   public void displayAverage() {
     System.out.println(average);
+  }
+
+  public double getAverage() {
+    return average;
   }
 
   public void addTest(int mark) {
