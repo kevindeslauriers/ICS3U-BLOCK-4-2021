@@ -19,7 +19,7 @@ public class StringExamples {
       String x = "ABCDEF";
 
       System.out.println(x.substring(2));
-      System.out.println(x.substring(2, 4));
+      System.out.println(x.substring(1, 4));
       System.out.println(x.substring(2, 3));
       System.out.println("Friday".substring(1, "Friday".length()));
 
