@@ -48,7 +48,10 @@ public class CrossCountry {
    }
 
    private static String convertToTime(double timeInSeconds) {
-      return null;
+      int minutes = 5;
+      double seconds = 6.9;
+
+      return String.format("%d:%06.3f", minutes, seconds);
    }
 
    private static double convertToSeconds(String time) {
