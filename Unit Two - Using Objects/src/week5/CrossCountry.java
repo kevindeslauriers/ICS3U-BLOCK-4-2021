@@ -22,13 +22,26 @@ public class CrossCountry {
        * times for the runner
        */
 
+      firstName = promptUser("Please enter your first name: ", in);
+      lastName = promptUser("Please enter your last name: ", in);
+      mileOne = promptUser("Please enter mile one time (mm:ss.sss): ", in);
+      mileTwo = promptUser("Please enter mile two time (mm:ss.sss): ", in);
+      finish = promptUser("Please enter 5 km time (mm:ss.sss): ", in);
+
       splitTwo = subtractTime(mileTwo, mileOne);
       splitThree = subtractTime(finish, mileTwo);
 
-      /**
-       * Display a summary for the runner
-       */
+      System.out.println("Name: " + firstName + " " + lastName);
+      System.out.println("Mile One: " + mileOne);
+      System.out.println("Split Two: " + splitTwo);
+      System.out.println("Split Three: " + splitThree);
+      System.out.println("Finish Time: " + finish);
 
+   }
+
+   private static String promptUser(String prompt, Scanner in) {
+      System.out.print(prompt);
+      return in.nextLine();
    }
 
    /**
@@ -48,14 +61,27 @@ public class CrossCountry {
    }
 
    private static String convertToTime(double timeInSeconds) {
-      int minutes = 5;
-      double seconds = 6.9;
+      int minutes = getMinutes(timeInSeconds);
+      double seconds = getSeconds(timeInSeconds);
 
       return String.format("%d:%06.3f", minutes, seconds);
    }
 
+   private static double getSeconds(double timeInSeconds) {
+      return timeInSeconds % 60;
+   }
+
+   private static int getMinutes(double timeInSeconds) {
+      return (int) (timeInSeconds / 60);
+   }
+
    private static double convertToSeconds(String time) {
-      return 0;
+      int colon = time.indexOf(":");
+      int minutes = Integer.parseInt(time.substring(0, colon));
+      double seconds = Double.parseDouble(time.substring(colon + 1));
+
+      return minutes * 60 + seconds;
+
    }
 
 }
