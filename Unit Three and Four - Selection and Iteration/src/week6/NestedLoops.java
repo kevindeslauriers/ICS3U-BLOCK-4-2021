@@ -3,7 +3,34 @@ package week6;
 public class NestedLoops {
    public static void main(String[] args) {
       // exampleOne();
-      framingSquares(2, 3, 2, 3);
+      // framingSquares(2, 3, 2, 3);
+      wordFrame("CANADA");
+
+   }
+
+   private static void wordFrame(String str) {
+      System.out.println("*" + str + "*");
+
+      for (int i = 0; i < str.length(); i++) {
+         String start = str.substring(i, i + 1);
+         String end = str.substring(str.length() - i - 1, str.length() - i);
+
+         System.out.print(end);
+         for (int j = 0; j < str.length(); j++) {
+            System.out.print("*");
+         }
+         System.out.println(start);
+      }
+
+      System.out.print("*");
+      for (int i = 0; i < str.length(); i++) {
+         System.out.print(str.substring(str.length() - i - 1, str.length() - i));
+      }
+      /**
+       * for (int i = str.length() - 1; i >= 0; i--) {
+       * System.out.print(str.substring(i, i + 1)); }
+       */
+      System.out.println("*");
 
    }
 
