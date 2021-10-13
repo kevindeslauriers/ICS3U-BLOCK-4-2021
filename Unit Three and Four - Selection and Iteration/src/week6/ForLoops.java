@@ -48,6 +48,5 @@ public class ForLoops {
       }
 
       return 0;
-
    }
 }
