@@ -3,9 +3,21 @@ package week6;
 public class NestedLoops {
    public static void main(String[] args) {
       // exampleOne();
-      // framingSquares(2, 3, 2, 3);
+      // framingSquares(1, 2, 3, 4);
       // wordFrame("CANADA");
-      diamonds("Really?");
+      diamonds("BAYVIEWGLEN");
+
+      String str = "CANADA";
+      String newString = "";
+
+      for (int i = str.length() - 1; i >= 0; i--) {
+
+         String letter = str.substring(i, i + 1);
+         if (!letter.equals("A"))
+            newString += letter;
+
+      }
+      System.out.print(newString);
 
    }
 
@@ -45,7 +57,6 @@ public class NestedLoops {
 
    private static void wordFrame(String str) {
       System.out.println("*" + str + "*");
-
       for (int i = 0; i < str.length(); i++) {
          String start = str.substring(i, i + 1);
          String end = str.substring(str.length() - i - 1, str.length() - i);
@@ -58,15 +69,11 @@ public class NestedLoops {
       }
 
       System.out.print("*");
-      for (int i = 0; i < str.length(); i++) {
-         System.out.print(str.substring(str.length() - i - 1, str.length() - i));
+      for (int i = str.length() - 1; i >= 0; i--) {
+         String letter = str.substring(i, i + 1);
+         System.out.print(letter);
       }
-      /**
-       * for (int i = str.length() - 1; i >= 0; i--) {
-       * System.out.print(str.substring(i, i + 1)); }
-       */
       System.out.println("*");
-
    }
 
    private static void framingSquares(int M, int N, int P, int Q) {
@@ -81,9 +88,11 @@ public class NestedLoops {
          for (int j = 0; j < Q; j++) {
             System.out.print("#");
          }
+
          for (int j = 0; j < 2 * P + N; j++) {
             System.out.print("+");
          }
+
          for (int j = 0; j < Q; j++) {
             System.out.print("#");
          }
@@ -97,9 +106,11 @@ public class NestedLoops {
          for (int j = 0; j < P; j++) {
             System.out.print("+");
          }
+
          for (int j = 0; j < N; j++) {
             System.out.print(".");
          }
+
          for (int j = 0; j < P; j++) {
             System.out.print("+");
          }
@@ -113,28 +124,28 @@ public class NestedLoops {
          for (int j = 0; j < Q; j++) {
             System.out.print("#");
          }
+
          for (int j = 0; j < 2 * P + N; j++) {
             System.out.print("+");
          }
+
          for (int j = 0; j < Q; j++) {
             System.out.print("#");
          }
          System.out.println();
       }
-
       for (int i = 0; i < Q; i++) {
          for (int j = 0; j < 2 * P + 2 * Q + N; j++) {
             System.out.print("#");
          }
          System.out.println();
       }
-
    }
 
    private static void exampleOne() {
       for (int i = 1; i <= 5; i++) {
          for (int j = 1; j <= 10; j++) {
-            System.out.printf("%5d", (i * j));
+            System.out.printf("%3d", (i * j));
          }
          System.out.println();
       }
