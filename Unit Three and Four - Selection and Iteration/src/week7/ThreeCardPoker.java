@@ -8,7 +8,7 @@ public class ThreeCardPoker {
    private static final String DIAMONDS = "D";
    private static final String CLUBS = "C";
    private static final String SPADES = "S";
-   private static final double CARDS_PER_SUIT = 13;
+   private static final int CARDS_PER_SUIT = 13;
    private static final String ACE = "A";
    private static final String JACK = "J";
    private static final String QUEEN = "Q";
