@@ -20,7 +20,38 @@ public class ThreeCardPoker {
       int wallet = 500;
       Scanner in = new Scanner(System.in);
 
-      // int bet = getWager(in, 50, 100, wallet);
+      boolean playAgain = true;
+      while (playAgain) {
+         wallet = playPokerHand(in, wallet, 50, 100);
+         if (wallet >= 100)
+            playAgain = playAgain(in);
+         else {
+            System.out.println("You don't have enough money to play again!");
+            playAgain = false;
+         }
+      }
+   }
+
+   private static boolean playAgain(Scanner in) {
+      boolean validInput = false;
+
+      while (!validInput) {
+         System.out.println("Do you want to play again ([Y]es / [N]o)");
+         String answer = in.nextLine().toUpperCase();
+         if (answer.equals("YES") || answer.equals("Y"))
+            return true;
+         else if (answer.equals("NO") || answer.equals("N")) {
+            return false;
+         } else {
+            System.out.println("Invalid Input: Yes or No only!");
+         }
+      }
+
+      return false;
+   }
+
+   private static int playPokerHand(Scanner in, int wallet, int i, int j) {
+      int bet = getWager(in, 50, 100, wallet);
 
       String playerHand = "";
       playerHand = getCard(playerHand) + " ";
@@ -30,7 +61,6 @@ public class ThreeCardPoker {
       System.out.println(playerHand);
 
       playerHand = discard(in, playerHand);
-
    }
 
    private static String getCard(String usedCards) {
@@ -104,19 +134,19 @@ public class ThreeCardPoker {
          playerHand += getCard(playerHand + temp) + " ";
          playerHand += getCard(playerHand + temp) + " ";
       } else {
-         String cardToReplace = getCardsToDiscard(in, numCardsToReplace, playerHand);
-         int space = cardToReplace.indexOf(" ");
+         String cardsToReplace = getCardsToDiscard(in, numCardsToReplace, playerHand);
+         int space = cardsToReplace.indexOf(" ");
          String card1 = "";
          if (space == -1)
-            card1 = cardToReplace;
+            card1 = cardsToReplace;
          else
-            card1 = cardToReplace.substring(0, space);
+            card1 = cardsToReplace.substring(0, space);
 
          String card = getCard(playerHand + temp);
          playerHand = playerHand.replace(card1, card);
          if (numCardsToReplace == 2) {
-            String card2 = cardToReplace.substring(space + 1);
-            card = getCard(playerHand + cardToReplace + temp);
+            String card2 = cardsToReplace.substring(space + 1);
+            card = getCard(playerHand + cardsToReplace + temp);
             playerHand = playerHand.replace(card2, card);
          }
       }
@@ -152,11 +182,13 @@ public class ThreeCardPoker {
          cards = in.nextLine().toUpperCase();
          if (countOccurences(cards, " ") != numCardsToReplace - 1) {
             System.out.println("You must choose " + numCardsToReplace + " cards.");
+         } else if ((numCardsToReplace == 1) && VALID_CARDS.indexOf(cards) < 0) {
+            System.out.println("Not a valid card: " + cards);
          } else if ((numCardsToReplace == 1) && (playerHand.indexOf(cards) < 0))
             System.out.println("You don't have a " + cards);
-         else if ((numCardsToReplace == 1) && (playerHand.indexOf(cards) >= 0))
+         else if ((numCardsToReplace == 1) && (playerHand.indexOf(cards) >= 0)) {
             validInput = true;
-         else if (numCardsToReplace == 2) {
+         } else if (numCardsToReplace == 2) {
             int space = cards.indexOf(" ");
 
             String card1 = cards.substring(0, space);
@@ -169,7 +201,7 @@ public class ThreeCardPoker {
                System.out.println("You don't have a " + card1);
             else if (playerHand.indexOf(card2) < 0)
                System.out.println("You don't have a " + card2);
-            else if (playerHand.equals(card2))
+            else if (card1.equals(card2))
                System.out.println("You cannot discard the same card.");
             else
                validInput = true;
