@@ -17,12 +17,14 @@ public class PolyDriver {
       // ((Dog) animal).chaseTail();
       /*
        * Gadget g = new Gadget(); Gadget.setStatus(4); Gadget g2 = new Gadget();
+       * //Gadget.status = 7;
        */
 
       Beverage coke = new Beverage(8);
       Beverage pepsi = new Beverage(10);
       coke.sell(3);
       pepsi.sell(2);
+
    }
 
 }

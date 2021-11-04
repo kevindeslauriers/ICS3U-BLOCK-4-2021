@@ -3,16 +3,16 @@ package week9;
 public class Beverage {
 
    private int numOunces;
-   private static int numSold = 0;
+   private static int numSold;
 
    public Beverage(int numOz) {
       numOunces = numOz;
    }
 
    /* belongs to the class */
-   public void sell(int n) {
+   public static void sell(int n) {
       numSold += n;
-
+      numOunces++;
    }
 
 }
