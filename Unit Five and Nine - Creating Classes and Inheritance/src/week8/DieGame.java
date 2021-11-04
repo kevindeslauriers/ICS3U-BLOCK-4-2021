@@ -2,8 +2,8 @@ package week8;
 
 public class DieGame {
    public static void main(String[] args) {
-      Die die1 = new Die();
-      Die die2 = new Die();
+      Die die1 = new Die(); // use the keyword new with constructors (create an instance)
+      Die die2 = new Die(6);
       int countPairs = 0;
 
       for (int i = 0; i < 100; i++) {
