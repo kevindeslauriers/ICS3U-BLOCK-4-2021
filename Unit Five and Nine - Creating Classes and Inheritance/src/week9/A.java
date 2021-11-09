@@ -10,4 +10,8 @@ public class A {
    public A(String num) {
 
    }
+
+   public void sample() {
+
+   }
 }
