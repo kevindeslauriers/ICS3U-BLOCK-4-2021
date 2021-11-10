@@ -47,7 +47,9 @@ public class DoubleArraySequence {
     **/
    // Created DoubleArraySequence
    public DoubleArraySequence() {
-
+      manyItems = 0;
+      currentIndex = 0;
+      data = new double[DEFAULT_CAPACITY];
    }
 
    /**
@@ -65,7 +67,12 @@ public class DoubleArraySequence {
     **/
    // Get empty sequence with a specified Capacity
    public DoubleArraySequence(int initialCapacity) throws IllegalArgumentException {
+      if (initialCapacity < 0)
+         throw new IllegalArgumentException("Capacity must be non-negative.");
 
+      manyItems = 0;
+      currentIndex = 0;
+      data = new double[initialCapacity];
    }
 
    /**
@@ -146,7 +153,6 @@ public class DoubleArraySequence {
     * sequence.
     * 
     * @param - none
-    * @throws IllegalAccessException
     * @precondition isCurrent() returns true.
     * @postcondition If the current element was already the end element of this
     *                sequence (with nothing after it), then there is no longer any
@@ -156,7 +162,10 @@ public class DoubleArraySequence {
     *                                  so advance may not be called.
     **/
    public void advance() throws IllegalStateException {
+      if (!isCurrent())
+         throw new IllegalStateException("No Current Element.");
 
+      currentIndex++;
    }
 
    /**
@@ -203,7 +212,7 @@ public class DoubleArraySequence {
     * @return the current capacity of this sequence
     **/
    public int getCapacity() {
-      return 1;
+      return data.length;
    }
 
    /**
@@ -229,7 +238,7 @@ public class DoubleArraySequence {
     **/
    public boolean isCurrent() { // see if sequence has a specified current element
 
-      return true;
+      return currentIndex != manyItems;
    }
 
    /**
@@ -256,7 +265,7 @@ public class DoubleArraySequence {
     **/
    public int size() { // Determine the number of elements in this sequence.
 
-      return 1;
+      return manyItems;
    }
 
    /**
@@ -268,6 +277,7 @@ public class DoubleArraySequence {
     *                current element).
     **/
    public void start() {
+      currentIndex = 0;
 
    }
 
